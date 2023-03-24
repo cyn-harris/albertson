@@ -28,7 +28,7 @@ class AcronymViewModel @Inject constructor(private val repo: AcronymRepository) 
 
     var input = MutableLiveData("")
 
-    private val handler = CoroutineExceptionHandler { context, throwable ->
+    private val handler = CoroutineExceptionHandler { _, throwable ->
         val errorText = when (throwable) {
             is SerializationException -> R.string.serialization
             is IOException -> R.string.io
