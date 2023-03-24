@@ -12,7 +12,7 @@ import retrofit2.http.Query
  */
 interface AcronymService {
     @GET(DICT_ENDPOINT)
-    fun getWordFromAcronym(@Query("sf") initials: String): Response<ArrayList<ShortForResponseItem>>
+    suspend fun getWordFromAcronym(@Query("sf") initials: String): Response<ArrayList<ShortForResponseItem>>
 
     companion object {
         const val DICT_ENDPOINT = "dictionary.py"

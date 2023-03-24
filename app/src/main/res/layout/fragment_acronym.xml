@@ -13,7 +13,8 @@
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:showError="@{acronymViewModel.state}">
         <EditText
             android:id="@+id/input_text"
             android:hint="@string/hint_text"
@@ -23,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@id/main_button_submit"
+            app:layout_constraintBottom_toBottomOf="@id/main_button_submit"
             android:padding="5dp"
             android:inputType="text"
             android:maxLines="1"
@@ -37,6 +39,7 @@
             android:enabled="@{acronymViewModel.input.length > 0}"
             android:onClick="@{() -> acronymViewModel.getWordsFromAcronym()}"
             android:text="@string/search"
+            app:layout_constraintStart_toEndOf="@id/input_text"
             app:layout_constraintBottom_toBottomOf="@id/input_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/input_text" />
@@ -65,6 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:adapter="@{adapter}"
+            android:updateState="@{acronymViewModel.state}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/main_divider"

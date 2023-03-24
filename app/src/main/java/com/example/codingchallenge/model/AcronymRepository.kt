@@ -16,7 +16,7 @@ class AcronymRepository @Inject constructor(private val acronymService: AcronymS
      * @param acronym
      * @return
      */
-    fun getWordsFromAcronym(acronym: String): List<String> {
+    suspend fun getWordsFromAcronym(acronym: String): List<String> {
         val response = acronymService.getWordFromAcronym(acronym)
         return if (response.isSuccessful) {
             response.body()?.first()?.lfs?.map { it.lf } ?: emptyList()
